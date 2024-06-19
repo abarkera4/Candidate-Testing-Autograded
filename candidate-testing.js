@@ -37,9 +37,9 @@ function gradeQuiz(candidateAnswers) {
   let correctCount = 0;
 
   for (let i = 0; i < candidateAnswers.length; i++){
-    console.log(`Checking answer for question ${i + 1}`); // Debugging log
-    console.log(`Candidate answer: ${candidateAnswers[i]}`); // Debugging log
-    console.log(`Correct answer: ${correctAnswers[i]}`); // Debugging log
+//    console.log(`Checking answer for question ${i + 1}`); // Debugging log
+//    console.log(`Candidate answer: ${candidateAnswers[i]}`); // Debugging log
+//    console.log(`Correct answer: ${correctAnswers[i]}`); // Debugging log
     if (candidateAnswers[i].toUpperCase() !== correctAnswers[i].toUpperCase()){
       console.log(`Question ${i + 1}: Incorrect.`);
     } else {
@@ -58,7 +58,7 @@ function runProgram() {
   // TODO 1.1c: Greet candidate using their name //
    console.log(`Hello, ${candidateName}!`);
   askQuestion();
-  console.log(`Candidate answers: ${candidateAnswers}`); // Debugging log
+//  console.log(`Candidate answers: ${candidateAnswers}`); // Debugging log
   gradeQuiz(candidateAnswers);
 }
 
