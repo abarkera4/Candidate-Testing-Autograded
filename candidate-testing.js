@@ -18,7 +18,7 @@ let candidateAnswers = [];
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
 
-  candidateName = input.question("What is your name? ");
+  candidateName = input.question("Enter your name: ");
 }
 
 function askQuestion() {
@@ -28,6 +28,7 @@ function askQuestion() {
 
     candidateAnswer = input.question(questions[i]);
     candidateAnswers.push(candidateAnswer);
+    console.log(`\n`)
 }
 }
 
@@ -35,30 +36,37 @@ function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
   let correctCount = 0;
-
+  console.log(`Candidate Name: ${candidateName}`)
   for (let i = 0; i < candidateAnswers.length; i++){
-//    console.log(`Checking answer for question ${i + 1}`); // Debugging log
-//    console.log(`Candidate answer: ${candidateAnswers[i]}`); // Debugging log
-//    console.log(`Correct answer: ${correctAnswers[i]}`); // Debugging log
+
+    console.log(`${i + 1}) ${questions[i]}`)
+    console.log(`Your answer: ${candidateAnswers[i]}`)
+    console.log(`Correct answer: ${correctAnswers[i]}\n`)
+
     if (candidateAnswers[i].toUpperCase() !== correctAnswers[i].toUpperCase()){
-      console.log(`Question ${i + 1}: Incorrect.`);
+
     } else {
-      console.log(`Question ${i + 1}: Correct!`);
       correctCount++;
     }
   }
 
   let grade = (correctCount / questions.length) * 100;  //TODO 3.2 use this variable to calculate the candidates score.
-  console.log(`Your grade is: ${grade}%.`)
+  console.log(`>>> Overall grade: ${grade}%. (${correctCount} of ${questions.length} responses correct.) <<<`)
+
+  if (grade >= 80){
+    console.log(">>> Status: PASSED <<<")
+  } else {
+    console.log(">>> Status : FAILED<<< ")
+  }
 
   return grade;
 }
+
 function runProgram() {
   askForName();
   // TODO 1.1c: Greet candidate using their name //
    console.log(`Hello, ${candidateName}!`);
   askQuestion();
-//  console.log(`Candidate answers: ${candidateAnswers}`); // Debugging log
   gradeQuiz(candidateAnswers);
 }
 
