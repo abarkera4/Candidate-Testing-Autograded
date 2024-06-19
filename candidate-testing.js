@@ -11,50 +11,60 @@ let candidateAnswer = "";
 
 
 //TODO: Variables for Part 2
-let questions;
-let correctAnswers;
-let candidateAnswers;
+let questions = ["Who was the first American woman in space? ", "True or false: 5 kilometer == 5000 meters? ", "(5 + 3)/2 * 10 = ? ", "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ", "What is the minimum crew size for the ISS? "];
+let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", "3"] ;
+let candidateAnswers = [];
 
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
 
-  candidateName = input.question("Enter your name: ")
-  console.log(`Hello, ${candidateName}!`)
+  candidateName = input.question("Enter your name: ");
 }
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
 
-  candidateAnswer = input.question(`${question}`)
+  for (let i = 0; i < questions.length; i++){
 
-
+    candidateAnswer = input.question(questions[i]);
+    candidateAnswers.push(candidateAnswer);
+}
 }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  if (candidateAnswer !== "Sally Ride"){
-    console.log("The correct answer was Sally Ride.")
-  } else {
-    console.log("Correct!")
+  let correctCount = 0;
+
+  for (let i = 0; i < candidateAnswers.length; i++){
+    console.log(`Checking answer for question ${i + 1}`); // Debugging log
+    console.log(`Candidate answer: ${candidateAnswers[i]}`); // Debugging log
+    console.log(`Correct answer: ${correctAnswers[i]}`); // Debugging log
+    if (candidateAnswers[i].toUpperCase() !== correctAnswers[i].toUpperCase()){
+      console.log(`Question ${i + 1}: Incorrect.`);
+    } else {
+      console.log(`Question ${i + 1}: Correct!`);
+      correctCount++;
+    }
   }
 
-
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
-
+  let grade = (correctCount / questions.length) * 100;  //TODO 3.2 use this variable to calculate the candidates score.
+  console.log(`Your grade is: ${grade}%.`)
 
   return grade;
 }
-
 function runProgram() {
   askForName();
   // TODO 1.1c: Greet candidate using their name //
-   console.log();
+   console.log(`Hello, ${candidateName}!`);
   askQuestion();
-  gradeQuiz(this.candidateAnswers);
+  console.log(`Candidate answers: ${candidateAnswers}`); // Debugging log
+  gradeQuiz(candidateAnswers);
 }
+
 runProgram()
+
 // ----------- Don't write any code or change any code below this line ---------- //
 module.exports = {
   candidateName: candidateName,
