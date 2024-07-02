@@ -28,7 +28,7 @@ function askQuestion() {
     candidateAnswer = input.question(questions[i]);
     candidateAnswers.push(candidateAnswer);
     console.log(`\n`)
-}
+  }
 }
 
 function gradeQuiz(candidateAnswers) {
@@ -42,9 +42,7 @@ function gradeQuiz(candidateAnswers) {
     console.log(`Your answer: ${candidateAnswers[i]}`)
     console.log(`Correct answer: ${correctAnswers[i]}\n`)
 
-    if (candidateAnswers[i].toUpperCase() !== correctAnswers[i].toUpperCase()){
-
-    } else {
+    if (candidateAnswers[i].toUpperCase() === correctAnswers[i].toUpperCase()) {
       correctCount++;
     }
   }
